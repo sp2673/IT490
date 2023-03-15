@@ -1,0 +1,6 @@
+{
+    "name": "temp/json",
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}

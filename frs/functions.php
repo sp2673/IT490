@@ -1,5 +1,9 @@
 <?php
+require '../pnfs/mailer.php';
 require 'includes/init.php';
+
+
+
 // PROFILE REDIRECT FUNCTION
 function redirect_to_profile(){
     header('Location: profile.php');
@@ -19,6 +23,9 @@ if(isset($_GET['action']) && isset($_GET['id'])){
             $user_id = $_GET['id'];
             $my_id = $_SESSION['user_id'];
 
+            // EDITED
+            $user_email = $_SESSION['email']; //should work
+
             // IF GET SEND REQUEST ACTION
             if($_GET['action'] == 'send_req'){
                 // CHECK IS REQUEST ALREADY SENT OR NOT
@@ -34,6 +41,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                 // OTHERWISE MAKE FRIEND REQUEST
                 else{
                     $frnd_obj->send_frnd_req($my_id, $user_id);
+                    sendMail($user_email); // add "someone sent you a request"
                 }
             }
             // IF GET CANCEL REQUEST OR IGNORE REQUEST ACTION
