@@ -25,7 +25,7 @@ $get_all_req_sender = $frnd_obj->request_notification($_SESSION['user_id'], true
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo  $user_data->username;?></title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
 <body>
@@ -33,7 +33,7 @@ $get_all_req_sender = $frnd_obj->request_notification($_SESSION['user_id'], true
         
         <div class="inner_profile">
             <div class="img">
-                <img src="profile_images/<?php echo $user_data->user_image; ?>" alt="Profile image">
+                <!-- <img src="profile_images/<?php echo $user_data->user_image; ?>" alt="Profile image"> -->
             </div>
             <h1><?php echo  $user_data->username;?></h1>
         </div>

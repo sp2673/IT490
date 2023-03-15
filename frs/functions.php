@@ -2,6 +2,8 @@
 require '../pnfs/mailer.php';
 require 'includes/init.php';
 
+include 'includes/ChromePhp.php';
+
 
 
 // PROFILE REDIRECT FUNCTION
@@ -40,8 +42,9 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                 }
                 // OTHERWISE MAKE FRIEND REQUEST
                 else{
+                    //ChromePhp::log('Made it here.');
+                    setMailer($user_email); // add "someone sent you a request"
                     $frnd_obj->send_frnd_req($my_id, $user_id);
-                    sendMail($user_email); // add "someone sent you a request"
                 }
             }
             // IF GET CANCEL REQUEST OR IGNORE REQUEST ACTION
