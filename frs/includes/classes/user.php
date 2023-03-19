@@ -110,11 +110,28 @@ class User{
             die($e->getMessage());
         }
     }
+
+    // FIND USER EMAIL BY ID
+    function find_email_by_id($id){
+        try{
+            $find_email = $this->db->prepare("SELECT * FROM `users` WHERE id = ?");
+            $find_email->execute([$id]);
+            if($find_email->rowCount() === 1){
+                return $find_email->fetchAll(PDO::FETCH_BOTH);     
+            }
+            else{
+                return false;
+            }
+        }
+        catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
     
     // FETCH ALL USERS WHERE ID IS NOT EQUAL TO MY ID
     function all_users($id){
         try{
-            $get_users = $this->db->prepare("SELECT id, username, user_image FROM `users` WHERE id != ?");
+            $get_users = $this->db->prepare("SELECT id, username, user_image, user_email FROM `users` WHERE id != ?");
             $get_users->execute([$id]);
             if($get_users->rowCount() > 0){
                 return $get_users->fetchAll(PDO::FETCH_OBJ);

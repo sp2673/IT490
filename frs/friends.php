@@ -14,7 +14,7 @@ else{
 }
 // TOTAL REQUESTS
 $get_req_num = $frnd_obj->request_notification($_SESSION['user_id'], false);
-// TOTLA FRIENDS
+// TOTAL FRIENDS
 $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['user_id'], false);
 // GET MY($_SESSION['user_id']) ALL FRIENDS
 $get_all_friends = $frnd_obj->get_all_friends($_SESSION['user_id'], true);
@@ -60,7 +60,7 @@ $get_all_friends = $frnd_obj->get_all_friends($_SESSION['user_id'], true);
                         echo '<div class="user_box">
                                 <div class="user_img"><img src="profile_images/'.$row->user_image.'" alt="Profile image"></div>
                                 <div class="user_info"><span>'.$row->username.'</span>
-                                <span><a href="user_profile.php?id='.$row->id.'" class="see_profileBtn">See profile</a></div>
+                                <span><a href="user_profile.php?id='.$row->id.'&email='.$user_data->user_email.'" class="see_profileBtn">See profile</a></div>
                             </div>';
                     }
                 }

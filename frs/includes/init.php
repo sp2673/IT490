@@ -1,10 +1,12 @@
 <?php
 session_start();
 session_regenerate_id(true);
+ini_set('max_input_vars', 3000);
 
 require 'classes/database.php';
 require 'classes/user.php';
 require 'classes/friend.php';
+
 
 // DATABASE CONNECTIONS
 $db = new Database();

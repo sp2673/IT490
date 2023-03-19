@@ -94,13 +94,13 @@ class Friend{
     }
 
     // MAKE PENDING FRIENDS (SEND FRIEND REQUEST)
-    public function send_frnd_req($my_id, $user_id){
+    public function send_frnd_req($my_id, $user_id, $user_email){
         
         try{
             $sql = "INSERT INTO `friend_request`(sender, receiver) VALUES(?,?)";
             $stmt = $this->db->prepare($sql);
             $stmt->execute([$my_id, $user_id]);
-            header('Location: user_profile.php?id='.$user_id);
+            header('Location: user_profile.php?id='.$user_id.'&email='.$user_email);
             exit;
         }
         catch (PDOException $e) {
@@ -113,7 +113,7 @@ class Friend{
     }
 
     // CANCEL FRIEND REQUEST
-    public function cancel_or_ignore_friend_request($my_id, $user_id){
+    public function cancel_or_ignore_friend_request($my_id, $user_id, $user_email){
         
         try{
             $sql = "DELETE FROM `friend_request` WHERE (sender = :my_id AND receiver = :frnd_id) OR (sender = :frnd_id AND receiver = :my_id)";
@@ -122,7 +122,7 @@ class Friend{
             $stmt->bindValue(':my_id',$my_id, PDO::PARAM_INT);
             $stmt->bindValue(':frnd_id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
-            header('Location: user_profile.php?id='.$user_id);
+            header('Location: user_profile.php?id='.$user_id.'&email='.$user_email);
             exit;
         }
         catch (PDOException $e) {
@@ -132,7 +132,7 @@ class Friend{
     }
 
     // MAKE FRIENDS
-    public function make_friends($my_id, $user_id){
+    public function make_friends($my_id, $user_id, $user_email){
         
         try{
 
@@ -146,7 +146,7 @@ class Friend{
                 $sql = "INSERT INTO `friends`(user_one, user_two) VALUES(?, ?)";
                 $stmt = $this->db->prepare($sql);
                 $stmt->execute([$my_id, $user_id]);
-                header('Location: user_profile.php?id='.$user_id);
+                header('Location: user_profile.php?id='.$user_id.'&email='.$user_email);
                 exit;
                 
             }            
@@ -157,14 +157,14 @@ class Friend{
 
     }
     // DELETE FRIENDS 
-    public function delete_friends($my_id, $user_id){
+    public function delete_friends($my_id, $user_id, $user_email){
         try{
             $delete_friends = "DELETE FROM `friends` WHERE (user_one = :my_id AND user_two = :frnd_id) OR (user_one = :frnd_id AND user_two = :my_id)";
             $delete_stmt = $this->db->prepare($delete_friends);
             $delete_stmt->bindValue(':my_id',$my_id, PDO::PARAM_INT);
             $delete_stmt->bindValue(':frnd_id', $user_id, PDO::PARAM_INT);
             $delete_stmt->execute();
-            header('Location: user_profile.php?id='.$user_id);
+            header('Location: user_profile.php?id='.$user_id.'&email='.$user_email);
             exit;
         }
         catch (PDOException $e) {
@@ -175,7 +175,7 @@ class Friend{
     // REQUEST NOTIFICATIONS
     public function request_notification($my_id, $send_data){
         try{
-            $sql = "SELECT sender, username, user_image FROM `friend_request` JOIN users ON friend_request.sender = users.id WHERE receiver = ?";
+            $sql = "SELECT sender, username, user_image, user_email FROM `friend_request` JOIN users ON friend_request.sender = users.id WHERE receiver = ?";
 
             $stmt = $this->db->prepare($sql);
             $stmt->execute([$my_id]);

@@ -58,7 +58,7 @@ $get_all_req_sender = $frnd_obj->request_notification($_SESSION['user_id'], true
                         echo '<div class="user_box">
                                 <div class="user_img"><img src="profile_images/'.$row->user_image.'" alt="Profile image"></div>
                                 <div class="user_info"><span>'.$row->username.'</span>
-                                <span><a href="user_profile.php?id='.$row->sender.'" class="see_profileBtn">See profile</a></div>
+                                <span><a href="user_profile.php?id='.$row->sender.'&email='.$row->user_email.'" class="see_profileBtn">See profile</a></div>
                             </div>';
                     }
                 }

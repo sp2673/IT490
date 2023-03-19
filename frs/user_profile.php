@@ -1,5 +1,6 @@
 <?php
 require 'includes/init.php';
+
 if(isset($_SESSION['user_id']) && isset($_SESSION['email'])){
     if(isset($_GET['id'])){
         $user_data = $user_obj->find_user_by_id($_GET['id']);
@@ -63,17 +64,17 @@ $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['user_id'], false);
             <div class="actions">
                 <?php
                 if($is_already_friends){
-                    echo '<a href="functions.php?action=unfriend_req&id='.$user_data->id.'" class="req_actionBtn unfriend">Unfriend</a>';
+                    echo '<a href="functions.php?action=unfriend_req&id='.$user_data->id.'&email='.$_GET['email'].'" class="req_actionBtn unfriend">Unfriend</a>';
                 }
                 elseif($check_req_sender){
-                    echo '<a href="functions.php?action=cancel_req&id='.$user_data->id.'" class="req_actionBtn cancleRequest">Cancel Request</a>';
+                    echo '<a href="functions.php?action=cancel_req&id='.$user_data->id.'&email='.$_GET['email'].'" class="req_actionBtn cancleRequest">Cancel Request</a>';
                 }
                 elseif($check_req_receiver){
                     echo '<a href="functions.php?action=ignore_req&id='.$user_data->id.'" class="req_actionBtn ignoreRequest">Ignore</a> 
-                    <a href="functions.php?action=accept_req&id='.$user_data->id.'" class="req_actionBtn acceptRequest">Accept</a>';
+                    <a href="functions.php?action=accept_req&id='.$user_data->id.'&email='.$_GET['email'].'" class="req_actionBtn acceptRequest">Accept</a>';
                 }
                 else{
-                    echo '<a href="functions.php?action=send_req&id='.$user_data->id.'" class="req_actionBtn sendRequest">Send Request</a>';
+                    echo '<a href="functions.php?action=send_req&id='.$user_data->id.'&email='.$_GET['email'].'" class="req_actionBtn sendRequest">Send Request</a>';
                 }
                 ?>
         
