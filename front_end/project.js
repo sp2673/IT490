@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (
         e.target.id === "signupUsername" &&
         e.target.value.length > 0 &&
-        e.target.value.length < 10
+        e.target.value.length < 10 
       ) {
         setInputError(
           inputElement,

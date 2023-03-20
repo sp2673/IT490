@@ -10,8 +10,6 @@ if(isset($_SESSION['email'])){
 }
 ?>
 
-all temporary html code. use Antony's website
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

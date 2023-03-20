@@ -39,7 +39,7 @@ if(isset($_SESSION['email'])){
         }
         if(isset($result['successMessage'])){
           echo '<p class="successMsg">'.$result['successMessage'].'</p>';
-          setMailer($_SESSION['email']);
+          //setMailer($_SESSION['email']);
         }
       ?>    
     </div>
