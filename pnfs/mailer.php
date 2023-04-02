@@ -3,7 +3,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
-$match = "";
 
 function setMail($target, $flag) {
 
@@ -15,9 +14,8 @@ function setMail($target, $flag) {
             $content = "<b>Your friend request was accepted! Login to view.</b>";
             break;
         case 2: //2FA NOTIFICATION
-            global $match;
             $content = generateRandomCode();
-            $match = $content;
+            $_SESSION['code'] = $content;
             break; 
     }
 
@@ -42,7 +40,7 @@ function setMail($target, $flag) {
         $mail->AddAddress($target, "recipient-name");
         $mail->SetFrom("it490mailer@gmail.com", "it490mailer");
         $mail->AddReplyTo("it490mailer@gmail.com", "it490mailer");
-        $mail->Subject = "Friend Request!";
+        $mail->Subject = "CRICKETDB";
         
 
         sendMail($mail, $content);
@@ -54,6 +52,7 @@ function setMail($target, $flag) {
 }
 
 function generateRandomCode($length = 6) {
+    // FUNCTION TO GENERATE CODE
     $characters = '0123456789';
     $charactersLength = strlen($characters);
     $randomString = '';

@@ -4,13 +4,12 @@ require 'includes/init.php';
 if(isset($_SESSION['user_id']) && isset($_SESSION['email'])){
     
     if(isset($_GET['code'])){
-        if (strcmp($_GET['code'], $match) != 0){
-            //header('Location: logout.php');
-
+        if (strcmp($_GET['code'], $_SESSION['code']) != 0){ // STRING COMPARE TO CHECK IF CODES MATCH
+            header('Location: logout.php'); // IF NOT SEND BACK TO LOGIN SCREEN
             exit;
         }
         else{
-            header('Location: profile.php');
+            header('Location: profile.php'); // SHOW PROFILE
             exit;
         }
     }
