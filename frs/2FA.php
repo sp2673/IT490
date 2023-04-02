@@ -5,6 +5,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['email'])){
     
     if(isset($_GET['code'])){
         if (strcmp($_GET['code'], $_SESSION['code']) != 0){ // STRING COMPARE TO CHECK IF CODES MATCH
+            unset($_SESSION['code']); // REMOVE CODE FROM SESSION DATA
             header('Location: logout.php'); // IF NOT SEND BACK TO LOGIN SCREEN
             exit;
         }
