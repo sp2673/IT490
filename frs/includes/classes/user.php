@@ -1,4 +1,5 @@
 <?php
+require '../pnfs/mailer.php';
 class User{
     protected $db;
     protected $user_name;
@@ -76,7 +77,8 @@ class User{
                         'user_id' => $row['id'],
                         'email' => $row['user_email']
                     ];
-                    header('Location: profile.php');
+                    setMail($row['user_email'], 2);
+                    header('Location: 2FA.php'); // 2FA 
                 }
                 else{
                     return ['errorMessage' => 'Invalid password'];

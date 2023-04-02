@@ -2,15 +2,17 @@
 require 'includes/init.php';
 include 'includes/ChromePhp.php';
 
+
 // IF USER MAKING LOGIN REQUEST
 if(isset($_POST['email']) && isset($_POST['password'])){
   $result = $user_obj->loginUser($_POST['email'],$_POST['password']);
 }
 // IF USER ALREADY LOGGED IN
 if(isset($_SESSION['email'])){
-  header('Location: profile.php');
+  header('Location: 2FA.php');
   exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,8 @@ if(isset($_SESSION['email'])){
         }
         if(isset($result['successMessage'])){
           echo '<p class="successMsg">'.$result['successMessage'].'</p>';
-          //setMailer($_SESSION['email']);
+
+
         }
       ?>    
     </div>

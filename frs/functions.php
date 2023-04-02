@@ -58,7 +58,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                 }
                 // OTHERWISE MAKE FRIEND REQUEST
                 else{     
-                    alertFriend($user_email); // add "someone sent you a request"
+                    setMail($user_email, 0); // add "someone sent you a request"
                     $frnd_obj->send_frnd_req($my_id, $user_id, $user_email);
                 }
             }
@@ -74,7 +74,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                     redirect_to_profile();
                 }
                 else{
-                    alertAccept($user_email);
+                    setMail($user_email, 1);
                     $frnd_obj->make_friends($my_id, $user_id, $user_email);
                 }
             }

@@ -3,9 +3,24 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+$match = "";
 
+function setMail($target, $flag) {
 
-function alertFriend($target){
+    switch ($flag){
+        case 0: //RECEIVED A FRIEND REQUEST
+            $content = "<b>You have recently received a friend request! Login to view.</b>";
+            break;
+        case 1: //ACCEPETED FRIEND REQUEST
+            $content = "<b>Your friend request was accepted! Login to view.</b>";
+            break;
+        case 2: //2FA NOTIFICATION
+            global $match;
+            $content = generateRandomCode();
+            $match = $content;
+            break; 
+    }
+
     try {
         $mail = new PHPMailer(true); 
 
@@ -28,7 +43,7 @@ function alertFriend($target){
         $mail->SetFrom("it490mailer@gmail.com", "it490mailer");
         $mail->AddReplyTo("it490mailer@gmail.com", "it490mailer");
         $mail->Subject = "Friend Request!";
-        $content = "<b>You have recently received a friend request! Login to view.</b>";
+        
 
         sendMail($mail, $content);
 
@@ -38,37 +53,14 @@ function alertFriend($target){
     }
 }
 
-function alertAccept($target) {
-    try {
-        $mail = new PHPMailer(true); 
-
-        //Settings
-        $mail->IsSMTP();
-        $mail->Mailer = "smtp";
-        $mail->CharSet = 'UTF-8';
-
-        //From address
-        $mail->SMTPDebug  = 1;  
-        $mail->SMTPAuth   = TRUE;
-        $mail->SMTPSecure = "tls";
-        $mail->Port       = 587; // 587
-        $mail->Host       = "smtp.gmail.com";
-        $mail->Username   = "it490mailer@gmail.com";
-        $mail->Password   = "whwvlwlmotnqtqub";
-
-        $mail->IsHTML(true);
-        $mail->AddAddress($target, "recipient-name");
-        $mail->SetFrom("it490mailer@gmail.com", "it490mailer");
-        $mail->AddReplyTo("it490mailer@gmail.com", "it490mailer");
-        $mail->Subject = "New Friend!";
-        $content = "<b>Your friend request was accepted! Login to view.</b>";
-
-        sendMail($mail, $content);
-
-    } catch(Exception $e) {
-        var_export($e);
-        //$mail = null;
+function generateRandomCode($length = 6) {
+    $characters = '0123456789';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
     }
+    return $randomString;
 }
 
 
