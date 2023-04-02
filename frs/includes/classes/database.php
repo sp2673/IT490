@@ -4,9 +4,9 @@ class Database
     function dbConnection()
     {
         $db_host = "localhost"; //temporary must change to dbhost ip
-        $db_name = "friendSystem";
-        $db_username = "root";
-        $db_password = "";
+        $db_name = "CricketDB";
+        $db_username = "admin";
+        $db_password = "admin";
 
         $curr_db = 'mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8';
         try{

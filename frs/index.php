@@ -41,6 +41,8 @@ if(isset($_SESSION['email'])){
         }
         if(isset($result['successMessage'])){
           echo '<p class="successMsg">'.$result['successMessage'].'</p>';
+
+
         }
       ?>    
     </div>
