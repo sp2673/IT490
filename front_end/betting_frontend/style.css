@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 24px;
+}
+
+.main_view{
+    max-height: 100vh;
+
+}
+
+.main_header_container{
+    background-color:#28b487;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 3.25rem;
+}
+
+.main_header_container > label{
+    margin-left: 1rem;
+
+}
+
+label{
+    margin-right: 1rem;
+}
+
+.border{
+    border-radius: 50px;
+}
+
+.header_button{
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+    border: none;
+    background-color: whitesmoke;
+    color: black;
+    padding: .3rem .8rem;
+    align-self: center;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.header_button:hover{
+    color: #00acee;
+}
+
+.header_button:active{
+    transform: translate(0, 5px);
+    box-shadow: none;
+}
+
+.img{
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    left: 0;
+    margin-left: 5px;
+    border-radius: 75%;
+}
+
+select{
+    margin-left: 10px;
+    align-self: center;
+    outline: none; 
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.reviews{
+    position: absolute;
+    top: 10%;
+    font-size: 1rem;
+    width: auto;
+    height: max-content;
+    opacity: 0;
+    padding: 20px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 20px;
+}
+
+select{
+    padding: 0px 5px;
+}
+
+.review{
+
+    width: 12rem;
+    height: fit-content;
+    width: 1500px;
+    padding: 10px;
+    font-size: 0.5rem;
+    margin-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.stars{
+    align-self: flex-start;
+}
+
+.comments{
+    word-wrap: break-word;
+    margin-top: 1rem;
+    
+
+}
+
+.button_2{
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.title{
+    margin-right: 100px;
+}
+
+.winner{
+    position: absolute;
+    left: 30%;
+    top: 40%;
+    opacity: 0;
+    font-size: 2rem;
+}
+
+
+.estimation{
+    background-color: #66c5ea;
+    opacity: 0;
+}
+
