@@ -1,0 +1,14 @@
+@import url(https://preview.redd.it/why-cricket-betting-is-so-popular-in-india-v0-8piavk7u3t8a1.jpg?width=1600&format=pjpg&auto=webp&s=b7d6501bfd16fd2b7c0a25e2a388ab65e877677c);
+
+* {
+    font-family: Raleway;
+}
+.main_body{
+    background-image: url(https://preview.redd.it/why-cricket-betting-is-so-popular-in-india-v0-8piavk7u3t8a1.jpg?width=1600&format=pjpg&auto=webp&s=b7d6501bfd16fd2b7c0a25e2a388ab65e877677c);
+    background-size: contain ;
+    height: 100vh;
+}
+
+html {
+    background-color: #d10c0c;
+}
