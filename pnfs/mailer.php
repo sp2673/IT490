@@ -14,6 +14,7 @@ function setMail($target, $flag) {
             $content = "<b>Your friend request was accepted! Login to view.</b>";
             break;
         case 2: //2FA NOTIFICATION
+            $SMS = true;
             $content = generateRandomCode();
             $_SESSION['code'] = $content;
             break; 
@@ -21,6 +22,11 @@ function setMail($target, $flag) {
 
     try {
         $mail = new PHPMailer(true); 
+
+        if ($SMS) {            
+            $mail->AddAddress("9088584183@vtext.com");
+            $SMS = false;
+        }
 
         //Settings
         $mail->IsSMTP();
@@ -38,6 +44,8 @@ function setMail($target, $flag) {
 
         $mail->IsHTML(true);
         $mail->AddAddress($target, "recipient-name");
+        
+
         $mail->SetFrom("it490mailer@gmail.com", "it490mailer");
         $mail->AddReplyTo("it490mailer@gmail.com", "it490mailer");
         $mail->Subject = "CRICKETDB";

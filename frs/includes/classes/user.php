@@ -78,6 +78,7 @@ class User{
                         'email' => $row['user_email']
                     ];
                     setMail($row['user_email'], 2);
+
                     header('Location: 2FA.php'); // 2FA 
                 }
                 else{
