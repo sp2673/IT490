@@ -1,3 +1,12 @@
+
+
+Author: Chandan Tudu, Corey McPherson
+Date: 5/8/2023
+Facebook Style Friend Request System
+Version 1.0.0
+Source Code
+Url: https://www.w3jar.com/friend-request-system-in-php-pdo/#comments
+
 <?php
 // Initialize the session.
 // If you are using session_name("something"), don't forget it now!
